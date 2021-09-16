@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Zahlengenerator</title>
+		
+	<script>
+		function fZahlengenerator() {
+			var vQuersumme;
+			var vStart = document.getElementById("idStart").value;
+			var vEnde = document.getElementById("idEnde").value;
+			var vTeiler = document.getElementById("idTeiler").value;
+			var vQuadrat;
+			var vAusgabe = "";
+			
+			vAusgabe = vAusgabe + "<table border=1>";
+			vAusgabe = vAusgabe + "<tr><th>" + "Zahl" + "</th>";
+			vAusgabe = vAusgabe + "<th>" + "Quadrat" + "</th>";
+			vAusgabe = vAusgabe + "<th>" + "Quersumme" + "</th></tr>";
+			
+			while (vStart<=vEnde) {
+				vQuadrat = Math.pow(vStart,2);
+				vQuersumme = parseFloat(vQuadrat)+parseFloat(vStart);
+				
+			if (vQuersumme%vTeiler==0) {
+				vAusgabe = vAusgabe + "<tr><td>" + vStart + "</td>";
+				vAusgabe = vAusgabe + "<td>" + vQuadrat + "</td>";
+				vAusgabe = vAusgabe + "<td style=Background-color:green>" + vQuersumme + "</td></tr>";
+					
+			} else {
+				vAusgabe = vAusgabe + "<tr><td>" + vStart + "</td>";
+				vAusgabe = vAusgabe + "<td>" + vQuadrat + "</td>";
+				vAusgabe = vAusgabe + "<td>" + vQuersumme + "</td></tr>";
+			}
+				 
+				vStart++;
+			}
+			
+			vAusgabe = vAusgabe + "</table>";
+			
+			document.getElementById("idAusgabe").innerHTML = vAusgabe;
+		}
+	</script>
+</head>
+<body>
+	<h1>Zahlengenerator</h1>
+	Start: <input id="idStart" type="text" value="15"><br><br>
+	Ende: <input id="idEnde" type="text" value="20"><br><br>
+	Quersumme teilbar durch: <input id="idTeiler" type="text" value=""><br><br>
+	markieren <button onClick="fZahlengenerator();">Tabelle erzeugen</button><br><br>
+	<div id="idAusgabe"></div>
+</body>
+</html>
